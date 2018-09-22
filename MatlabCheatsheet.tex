@@ -28,7 +28,10 @@
             \texttt{ctrl-c} & Abort the current operation\\
             \texttt{format short} & Display 4 decimal places\\
             \texttt{format long} & Display 15 decimal places\\
-            \texttt{disp('text')} & Print text\\ \chline{Header}
+            \texttt{disp('text')} & Print text\\
+            \texttt{doc mean} & Open documentation of command \texttt{mean}\\
+            \texttt{help mean} & Open help of command \texttt{mean}\\
+            \texttt{edit myFile} & Creates/opens myFile\\ \chline{Header}
         \end{fancytable}
         
         % -------------------------------------------------------
@@ -68,9 +71,26 @@
             \texttt{eye(5)} & Make a $5 \times 5$ identity matrix\\
             \texttt{eye(12, 5)} & Make a $12 \times 5$ identity matrix\\
             \texttt{linspace(1.4, 6.3, 1004)} & Make a vector with $1004$ elements evenly spaced between $1.4$ and $6.3$\\
+            \texttt{[X,Y] = meshgrid(x,y)} & Creates grid\\
             \texttt{logspace(1.4, 6.3, 1004)} & Make a vector with $1004$ elements where the log of the spacing is evenly increasing between $1.4$ and $6.3$\\
             \texttt{7:15} & Row vector of $7,\,8,\ldots,14,\,15$ \\ \chline{Header}
         \end{fancytable}
+
+        % -------------------------------------------------------
+        % Saving and loading files
+        % -------------------------------------------------------
+        \begin{fancytable}{Saving and loading files}
+            \texttt{save myfile.mat} & Saves workspace variables in \texttt{myfile.mat}\\
+            \texttt{load myfile.mat} & Loads variables in \texttt{myfile.mat} into the current workspace\\ \chline{Header}
+        \end{fancytable}
+
+        % -------------------------------------------------------
+        % Existance of names
+        % -------------------------------------------------------
+        \begin{fancytable}{Existance of names}
+            \texttt{exist some\_name} & Returns numeric code, depending on whether this name already exists and if so, also depending on it's category (built-in, user-defined, etc.)\\ \chline{Header}
+        \end{fancytable}
+
         
         % -------------------------------------------------------
         % Operations on Matrices/Vectors
@@ -92,6 +112,21 @@
             \texttt{eig(A)} & Compute the eigenvalues of $A$\\
             \texttt{size(A)} & Get the size of $A$ \\ \chline{Header}
         \end{fancytable}
+
+        % -------------------------------------------------------
+        % Useful commands for matrices and arrays
+        % -------------------------------------------------------
+        \begin{fancytable}{Matrix and array commands}
+            \texttt{repelem} & Repeat copies of array elements\\
+            \texttt{repmat} & Repeat copies of array\\
+            \texttt{repmat} & Repeat copies of array\\
+            \texttt{length} & Length of largest array dimension\\
+            \texttt{sort} & sort array elements\\
+            \texttt{flip} & flip order of elements\\
+            \texttt{reshape} & Reshape array\\
+            \texttt{end} & Denotes last element\\
+            \texttt{size(A)} & Get the size of $A$ \\ \chline{Header}
+        \end{fancytable}
         
         % -------------------------------------------------------
         % Portions of Matrices/Vectors
@@ -102,7 +137,8 @@
             \texttt{x(1:3:end)} & Every third element of $x$ from the first to last\\
             \texttt{A(5,:)} & Get the \nth{5} row of $A$\\
             \texttt{A(:,5)} & Get the \nth{5} column of $A$\\
-            \texttt{A(5, 1:3)} & Get the first to third elements in the \nth{5} row\\ \chline{Header}
+            \texttt{A(5,1:3)} & Get the first to third elements in the \nth{5} row\\
+            \texttt{x(10:2:100)} & Contains every \nth{2} element of $x$\\ \chline{Header}
         \end{fancytable}
         
         % -------------------------------------------------------
@@ -134,7 +170,31 @@
             \texttt{realmax} & Largest positive floating-point number $1.7977 \cdot 10^{308}$\\
             \texttt{realmin} & Smallest positive floating-point number $2.2251 \cdot 10^{-308}$\\ \chline{Header}
         \end{fancytable}
+
+        % -------------------------------------------------------
+        % Linear algebra
+        % -------------------------------------------------------
+        \begin{fancytable}{Linear algebra}
+            \texttt{x = A\textbackslash b} & Solves \texttt{Ax = b}\\
+            \texttt{x = linsolve(A,B)} & Solves \texttt{A*X = B}\\
+            \texttt{[V,D] = eig(A,B)} & Diagonal matrix \texttt{D} of eigenvalues and matrix \texttt{V} whose columns are the corresponding right eigenvectors, so that \texttt{A*V = V*D}.\\ \chline{Header}
+            \texttt{[U,S,V] = svd(A)} & Singular value decomposition of matrix \texttt{A}, such that \texttt{A = U*S*V'}.
+            \texttt{inv} & Matrix inverse\\
+            \texttt{realmin} & Smallest positive floating-point number $2.2251 \cdot 10^{-308}$\\ \chline{Header}
+        \end{fancytable}
         
+        % -------------------------------------------------------
+        % Graphics
+        % -------------------------------------------------------
+        \begin{fancytable}{Linear algebra}
+            \texttt{x = A\textbackslash b} & Solves \texttt{Ax = b}\\
+            \texttt{x = linsolve(A,B)} & Solves \texttt{A*X = B}\\
+            \texttt{[V,D] = eig(A,B)} & Diagonal matrix \texttt{D} of eigenvalues and matrix \texttt{V} whose columns are the corresponding right eigenvectors, so that \texttt{A*V = V*D}.\\ \chline{Header}
+            \texttt{[U,S,V] = svd(A)} & Singular value decomposition of matrix \texttt{A}, such that \texttt{A = U*S*V'}.
+            \texttt{inv} & Matrix inverse\\
+            \texttt{realmin} & Smallest positive floating-point number $2.2251 \cdot 10^{-308}$\\ \chline{Header}
+        \end{fancytable}
+
     \end{multicols}
     
     \newpage
@@ -171,7 +231,12 @@
         \begin{exampleBlock}{Functions}
             \matlabcode{MatlabFiles/functions.m}
         \end{exampleBlock}
-        
+
+        % Multiline commands
+        \begin{exampleBlock}{Multiline commands}
+            \matlabcode{MatlabFiles/multiline.m}
+        \end{exampleBlock}
+
         % Function handles
         \begin{exampleBlock}{Function Handles}
             \matlabcode{MatlabFiles/functionHandles.m}
